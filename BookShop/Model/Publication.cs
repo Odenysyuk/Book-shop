@@ -13,7 +13,6 @@ namespace BookShop
         /// <summary>
         /// Gets or sets author id
         /// </summary>
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PublicationId { get; set; }
 
         /// <summary>

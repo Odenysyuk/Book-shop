@@ -54,7 +54,7 @@ namespace BookShop.Model
 
             modelBuilder.Entity<Pricing>().Map(m =>
             {                
-                m.Properties(p => new {p.Price, p.PublicationId });
+                m.Properties(p => new { p.PublicationId, p.Price });
                 m.ToTable("PricingOfPublication");
             });
 
