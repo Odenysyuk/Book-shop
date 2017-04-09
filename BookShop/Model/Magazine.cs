@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShop
 {
     /// <summary>
     /// Representation instance of Magazine
     /// </summary>
+    [Table("Magazines")]
     public class Magazine: Publication
     {
-        /// <summary>
-        /// Gets or sets magazine id
-        /// </summary>
-        public int MagazineId { get; set; }
+        ///// <summary>
+        ///// Gets or sets magazine id
+        ///// </summary>
+        //public int MagazineId { get; set; }
 
         /// <summary>
         /// Gets or sets categories of magazine
         /// </summary>
+        [MaxLength(50)]
         public string Categories { get; set; }
 
         /// <summary>
@@ -29,12 +28,14 @@ namespace BookShop
         /// <summary>
         /// Gets or sets company of magazine
         /// </summary>
+        [MaxLength(20)]
         public string Company { get; set; }
 
         /// <summary>
         /// Gets or sets number of magazine
         /// </summary>
-        public int Number { get; set; }
+        [Column("Printing")]
+        public int Printing { get; set; }
 
         public Magazine()
         {

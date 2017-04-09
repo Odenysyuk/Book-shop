@@ -1,9 +1,5 @@
 ﻿using BookShop.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookShop
 {
@@ -20,8 +16,10 @@ namespace BookShop
                     DateOfBirth = new DateTime(1965, 7, 31).ToUniversalTime()
                 };
 
+                //TODO: PublicationId, як зробити.щоб не вказувати?
                 Book book = new Book
                 {
+                    PublicationId = 1,
                     Title = "Harry Potter and the Philosopher's Stone",
                     PublicationDate = new DateTime(1997, 6, 26).ToUniversalTime(),
                     Pages = 223,
@@ -31,17 +29,18 @@ namespace BookShop
 
                 Magazine magazine = new Magazine
                 {
+                    PublicationId = 2,
                     Title = "Time",
                     PublicationDate = DateTime.Now.ToUniversalTime(),
                     Pages = 40,
                     Company = "Time Warner ",
                     Frequency = 12,
                     Categories = "News magazine",
-                    Number = 1313
+                    Printing = 1313
                 };
                 context.Authors.Add(author);
-                context.Magazines.Add(magazine);
-                context.Books.Add(book);
+                context.Publications.Add(magazine);
+                context.Publications.Add(book);
 
                 context.SaveChanges();
                 Console.WriteLine("OK");
