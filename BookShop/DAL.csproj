@@ -52,6 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201704091913340_IntializationBookShop.cs" />
+    <Compile Include="Migrations\201704091913340_IntializationBookShop.Designer.cs">
+      <DependentUpon>201704091913340_IntializationBookShop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Author.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\BookShopContext.cs" />
@@ -64,6 +69,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704091913340_IntializationBookShop.resx">
+      <DependentUpon>201704091913340_IntializationBookShop.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

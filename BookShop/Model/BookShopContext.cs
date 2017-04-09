@@ -26,7 +26,7 @@ namespace BookShop.Model
 
         public BookShopContext():base("BookShop")
         {
-
+            Database.SetInitializer(new CreateDatabaseIfNotExists<BookShopContext>());
         }
 
         //TODO: MAPPING????
@@ -54,7 +54,6 @@ namespace BookShop.Model
 
             modelBuilder.Entity<Pricing>().Map(m =>
             {                
-                m.Properties(p => new { p.PublicationId, p.Price });
                 m.ToTable("PricingOfPublication");
             });
 
@@ -71,7 +70,7 @@ namespace BookShop.Model
                                           .HasColumnType("float")                                          
                                           .IsRequired();
 
-            base.OnModelCreating(modelBuilder);
+            //base.OnModelCreating(modelBuilder);
         }
     }
 }

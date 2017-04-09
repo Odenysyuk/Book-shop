@@ -37,9 +37,6 @@ namespace BookShop
         /// </summary>
         public virtual Pricing Pricing { get; set; }
 
-        public Publication()
-        {
-
-        }
+        public Publication() {}
     }
 }
