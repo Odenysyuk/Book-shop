@@ -1,38 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using BookShop.Model;
+
 namespace BookShop.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BookShop.Model.BookShopContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<BookShopContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(BookShop.Model.BookShopContext context)
-        {                      
-                Author author = new Author
+        protected override void Seed(BookShopContext context)
+        {
+            var fantasy = new Genre {Id = 1, Name = "Fantasy"};
+
+            var author = new Author
                 {
                     FullName = "Joanne Rowling",
                     PenName = "J. K. Rowling",
                     DateOfBirth = new DateTime(1965, 7, 31).ToUniversalTime()
                 };
 
-                //TODO: PublicationId, як зробити.щоб не вказувати?
-                Book book = new Book
+            //TODO: PublicationId, як зробити.щоб не вказувати?
+            var book = new Book
                 {
                     PublicationId = 1,
                     Title = "Harry Potter and the Philosopher's Stone",
                     PublicationDate = new DateTime(1997, 6, 26).ToUniversalTime(),
                     Pages = 223,
-                    Genre = "Fantasy",
+       
                     AuthorOfPublication = author
                 };
+            book.Genres = new List<Genre>() {fantasy};
 
-                Magazine magazine = new Magazine
+            var magazine = new Magazine
                 {
                     PublicationId = 2,
                     Title = "Time",
@@ -40,12 +44,12 @@ namespace BookShop.Migrations
                     Pages = 40,
                     Company = "Time Warner ",
                     Frequency = 12,
-                    Categories = "News magazine",
-                    Printing = 1313
+                    Categories = "News magazine"
                 };
                 context.Authors.AddOrUpdate(author);
-                context.Publications.AddOrUpdate(magazine);
-                context.Publications.AddOrUpdate(book);
+                context.Magazines.AddOrUpdate(magazine);
+                context.Books.AddOrUpdate(book);
+                context.Genres.AddOrUpdate(fantasy);
 
                 context.SaveChanges();   
         }

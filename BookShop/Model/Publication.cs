@@ -9,12 +9,7 @@ namespace BookShop
     /// Representation instance of Publication
     /// </summary>
     public  abstract class Publication 
-    {
-        /// <summary>
-        /// Gets or sets author id
-        /// </summary>
-        public int PublicationId { get; set; }
-
+    {   
         /// <summary>
         /// Gets or sets title of publication
         /// </summary>
@@ -31,11 +26,6 @@ namespace BookShop
         /// Gets or sets author of publication
         /// </summary>
         public DateTime? PublicationDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets pricings
-        /// </summary>
-        public virtual Pricing Pricing { get; set; }
 
         public Publication() {}
     }

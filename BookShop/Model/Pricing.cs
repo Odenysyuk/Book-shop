@@ -1,21 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShop
 {
     /// <summary>
-    /// Representation instance of Pricing (one to one to Publication)
+    /// Representation instance of Pricing
     /// </summary>
     public class Pricing
     {
-        /////// <summary>
-        /////// Gets or sets pricing id
-        /////// </summary>
-        //public int Id { get; set; }
 
         ///// <summary>
         ///// Gets or sets primary and foreign key for Publication
         ///// </summary>
-        public int PublicationId { get; set; }    
+        [Key]       
+        public int PricingId { get; set; }
 
         ///// <summary>
         ///// Gets or sets price
@@ -24,7 +22,13 @@ namespace BookShop
 
         ///// <summary>
         ///// Gets or sets publication
-        ///// </summary>
-        public virtual Publication Publication { get; set; }
+        ///// </summary>   
+ 
+        //public virtual Book Book { get; set; }
+
+        ///// <summary>
+        ///// Gets or sets publication
+        ///// </summary>       
+        //public virtual Magazine Magazines { get; set; }
     }
 }

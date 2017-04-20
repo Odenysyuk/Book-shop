@@ -9,10 +9,11 @@ namespace BookShop
     [Table("Magazines")]
     public class Magazine: Publication
     {
-        ///// <summary>
-        ///// Gets or sets magazine id
-        ///// </summary>
-        //public int MagazineId { get; set; }
+        /// <summary>
+        /// Gets or sets magazine id
+        /// </summary>
+        [Key]
+        public int PublicationId { get; set; }
 
         /// <summary>
         /// Gets or sets categories of magazine
@@ -31,11 +32,10 @@ namespace BookShop
         [MaxLength(20)]
         public string Company { get; set; }
 
-        /// <summary>
-        /// Gets or sets number of magazine
-        /// </summary>
-        [Column("Printing")]
-        public int Printing { get; set; }
+        //public int PricingId { get; set; }
+
+        //[ForeignKey("PricingId")]
+        //public Pricing Pricing { get; set; }
 
         public Magazine()
         {

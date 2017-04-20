@@ -13,64 +13,47 @@ namespace BookShop.Model
         /// </summary>
         public DbSet<Author> Authors { get; set; }
 
-        // TODO: Чому ми не може тут створити два DbSet<Book> і  DbSet<Magazine>, воно створить теж дві таблиці із полями базового
         /// <summary>
         /// Gets or sets table of publications 
         /// </summary>
-        public DbSet<Publication> Publications { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         /// <summary>
-        /// Gets or sets table of pricing
+        /// Gets or sets table of publications 
         /// </summary>
-        public DbSet<Pricing> Pricings { get; set; }      
+        public DbSet<Magazine> Magazines { get; set; }
 
-        public BookShopContext():base("BookShop")
+        /// <summary>
+        /// Gets or sets table of genres 
+        /// </summary>
+        public DbSet<Genre> Genres { get; set; }
+
+        public BookShopContext() : base("BookShop")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<BookShopContext>());
         }
 
-        //TODO: MAPPING????
         /// <summary>
         /// Created TPC mapping
         /// </summary>
         /// <param name="modelBuilder">object of DbModelBuilder</param>    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Book>().Map(m => 
+            modelBuilder.Entity<Book>().Map(m =>
             {
-                m.MapInheritedProperties();
                 m.ToTable("Books");
             });
 
             modelBuilder.Entity<Magazine>().Map(m =>
             {
-                m.MapInheritedProperties();
                 m.ToTable("Magazines");
             });
 
-            modelBuilder.Entity<Publication>()
-                        .Property(p => p.PublicationId)
-                        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            //modelBuilder.Entity<Book>().HasRequired<Pricing>(p=> p.Pricing).WithOptional(p=>p.Book);
+            //modelBuilder.Entity<Magazine>().HasRequired<Pricing>(p => p.Pricing)
+            //                               .WithOptional(p => p.Magazines);
+            base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Pricing>().Map(m =>
-            {                
-                m.ToTable("PricingOfPublication");
-            });
-
-            
-            modelBuilder.Entity<Pricing>().HasKey<int>(p => p.PublicationId);
-
-            modelBuilder.Entity<Publication>()
-                        .HasOptional(p => p.Pricing)
-                        .WithRequired(p => p.Publication);
-
-            modelBuilder.Entity<Pricing>().Property(p => p.Price)
-                                          .HasColumnName("Price")
-                                          .HasColumnOrder(3)
-                                          .HasColumnType("float")                                          
-                                          .IsRequired();
-
-            //base.OnModelCreating(modelBuilder);
         }
     }
 }

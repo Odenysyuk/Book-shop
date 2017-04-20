@@ -7,13 +7,13 @@ namespace BookShop.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class IntializationBookShop : IMigrationMetadata
+    public sealed partial class InitialitionCreateDatatTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(IntializationBookShop));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialitionCreateDatatTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704091913340_IntializationBookShop"; }
+            get { return "201704151339301_InitialitionCreateDatatTable"; }
         }
         
         string IMigrationMetadata.Source
