@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201704191921177_CreateTableGende.Designer.cs">
       <DependentUpon>201704191921177_CreateTableGende.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704200608562_AddPricing.cs" />
+    <Compile Include="Migrations\201704200608562_AddPricing.Designer.cs">
+      <DependentUpon>201704200608562_AddPricing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Author.cs" />
     <Compile Include="Model\Book.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704191921177_CreateTableGende.resx">
       <DependentUpon>201704191921177_CreateTableGende.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704200608562_AddPricing.resx">
+      <DependentUpon>201704200608562_AddPricing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

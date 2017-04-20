@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShop
 {
@@ -8,7 +7,6 @@ namespace BookShop
     /// </summary>
     public class Pricing
     {
-
         ///// <summary>
         ///// Gets or sets primary and foreign key for Publication
         ///// </summary>
@@ -20,15 +18,15 @@ namespace BookShop
         ///// </summary>
         public int Price { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets publication
-        ///// </summary>   
- 
-        //public virtual Book Book { get; set; }
+        /// <summary>
+        /// Gets or sets related bool
+        /// </summary>   
 
-        ///// <summary>
-        ///// Gets or sets publication
-        ///// </summary>       
-        //public virtual Magazine Magazines { get; set; }
+        public virtual Book Book { get; set; }
+
+        /// <summary>
+        /// Gets or sets related magazine
+        /// </summary>       
+        public virtual Magazine Magazine { get; set; }
     }
 }

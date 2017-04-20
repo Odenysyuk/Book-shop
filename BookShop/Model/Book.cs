@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using BookShop.Model;
 using System.Collections.Generic;
 
 namespace BookShop
@@ -12,6 +10,11 @@ namespace BookShop
     [Table("Books")]
     public class Book: Publication
     {
+        public Book()
+        {
+            Genres = new HashSet<Genre>();
+        }
+        
         /// <summary>
         /// Gets or sets book id
         /// </summary>
@@ -27,18 +30,16 @@ namespace BookShop
         /// Gets or sets author of publication
         /// </summary>
         [ForeignKey("AuthorId")]
-        public Author AuthorOfPublication { get; set; }
+        public virtual Author AuthorOfPublication { get; set; }
+        
+        /// <summary>
+        /// Gets or sets related price info
+        /// </summary>
+        public virtual Pricing Pricing { get; set; }
 
-        //public int PricingId { get; set; }
-
-        //[ForeignKey("PricingId")]
-        //public Pricing Pricing { get; set; }
-
+        /// <summary>
+        /// Gets or sets related genres
+        /// </summary>
         public virtual ICollection<Genre> Genres { get; set; }
-
-        public Book()
-        {
-            Genres = new HashSet<Genre>();
-        }
     }
 }

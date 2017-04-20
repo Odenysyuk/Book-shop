@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShop
 {
@@ -32,14 +31,9 @@ namespace BookShop
         [MaxLength(20)]
         public string Company { get; set; }
 
-        //public int PricingId { get; set; }
-
-        //[ForeignKey("PricingId")]
-        //public Pricing Pricing { get; set; }
-
-        public Magazine()
-        {
-
-        }
+        /// <summary>
+        /// Gets or sets related price info
+        /// </summary>
+        public virtual Pricing Pricing { get; set; }
     }
 }

@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Configuration;
 
 namespace BookShop.Model
 {
@@ -28,7 +29,12 @@ namespace BookShop.Model
         /// </summary>
         public DbSet<Genre> Genres { get; set; }
 
-        public BookShopContext() : base("BookShop")
+        /// <summary>
+        /// Gets or sets pricings collection.
+        /// </summary>
+        public DbSet<Pricing> Pricings { get; set; }
+
+        public BookShopContext() : base("SchoolDBConnectionString")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<BookShopContext>());
         }
@@ -39,19 +45,11 @@ namespace BookShop.Model
         /// <param name="modelBuilder">object of DbModelBuilder</param>    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Book>().Map(m =>
-            {
-                m.ToTable("Books");
-            });
+            modelBuilder.Entity<Pricing>().HasOptional(p => p.Book).WithRequired(p => p.Pricing)
+                .Map(configurationAction: new Action<ForeignKeyAssociationMappingConfiguration>(x => x.MapKey("PricingId")));
+            modelBuilder.Entity<Pricing>().HasOptional(p => p.Magazine).WithRequired(p => p.Pricing)
+                .Map(configurationAction: new Action<ForeignKeyAssociationMappingConfiguration>(x => x.MapKey("PricingId")));
 
-            modelBuilder.Entity<Magazine>().Map(m =>
-            {
-                m.ToTable("Magazines");
-            });
-
-            //modelBuilder.Entity<Book>().HasRequired<Pricing>(p=> p.Pricing).WithOptional(p=>p.Book);
-            //modelBuilder.Entity<Magazine>().HasRequired<Pricing>(p => p.Pricing)
-            //                               .WithOptional(p => p.Magazines);
             base.OnModelCreating(modelBuilder);
 
         }
