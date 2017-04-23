@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShop
 {
     /// <summary>
     /// Representation instance of Publication
     /// </summary>
-    public  abstract class Publication 
+    public abstract class Publication 
     {   
         /// <summary>
         /// Gets or sets title of publication
@@ -26,7 +24,5 @@ namespace BookShop
         /// Gets or sets author of publication
         /// </summary>
         public DateTime? PublicationDate { get; set; }
-
-        public Publication() {}
     }
 }

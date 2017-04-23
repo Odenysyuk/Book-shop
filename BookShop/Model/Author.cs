@@ -38,10 +38,5 @@ namespace BookShop
         /// Gets or sets collection of books
         /// </summary>
         public ICollection<Book> Books { get; set; }
-
-        public Author()
-        {
-
-        }
     }
 }

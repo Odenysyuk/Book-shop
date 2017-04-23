@@ -1,13 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShop
 {
+    /// <summary>
+    /// Representation instance of Genre
+    /// </summary>
     [Table("Genres")]
     public class Genre
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Genre()
+        {
+            Books = new HashSet<Book>();
+        }
+
         /// <summary>
         /// Gets or sets genre id
         /// </summary>
@@ -24,10 +34,5 @@ namespace BookShop
         /// Collection of books
         /// </summary>
         public virtual  ICollection<Book> Books { get; set; }
-
-        public Genre()
-        {
-                Books = new HashSet<Book>();
-        }
     }
 }
