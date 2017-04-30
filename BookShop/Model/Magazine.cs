@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using BookShop.Model;
 
 namespace BookShop
 {
@@ -35,5 +38,11 @@ namespace BookShop
         /// Gets or sets related price info
         /// </summary>
         public virtual Pricing Pricing { get; set; }
+
+        /// <summary>
+        /// Gets or sets object of Subscriptions
+        /// </summary>
+        [ForeignKey("MagazineId")]
+        public virtual List<Subscriptions> Subscriptions { get; set; }
     }
 }

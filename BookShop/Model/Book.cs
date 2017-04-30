@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using BookShop.Model;
 
 namespace BookShop
 {
@@ -41,5 +42,10 @@ namespace BookShop
         /// Gets or sets related genres
         /// </summary>
         public virtual ICollection<Genre> Genres { get; set; }
+
+        /// <summary>
+        /// Gets or sets collection of orders
+        /// </summary>
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
